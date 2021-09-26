@@ -17,8 +17,24 @@ namespace WebApp.Controllers
         }
         public IActionResult Index()
         {
-            IEnumerable<Item> ObjList = _db.Items;
+            IEnumerable<Item>ObjList = _db.Items;
             return View(ObjList);
+        }
+        //Get-create
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+        //POST-create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Item obj)
+        {
+            _db.Items.Add(obj);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
+
