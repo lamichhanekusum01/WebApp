@@ -33,12 +33,12 @@ namespace WebApp.Controllers
         public IActionResult Create()
         {
 
-            IEnumerable<SelectListItem> TypeDropDown = (IEnumerable<SelectListItem>)_db.ExpenseTypes.Select(i => new SelectListItem
+            List<SelectListItem> TypeDropDown =  _db.ExpenseTypes.Select(i => new SelectListItem
             {
                 Text = i.Name,
                 Value = i.Id.ToString()
 
-            });
+            }).ToList();
             ViewBag.TypeDropDown = TypeDropDown;
             ExpenseVM expenseVM = new ExpenseVM()
             {
@@ -48,7 +48,7 @@ namespace WebApp.Controllers
                     Text = i.Name,
                     Value = i.Id.ToString()
 
-                })
+                }).ToList()
             };
             return View(expenseVM);
         }

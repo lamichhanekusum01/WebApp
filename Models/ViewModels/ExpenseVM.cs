@@ -8,7 +8,8 @@ namespace WebApp.Models.ViewModel
 {
     public class ExpenseVM
     {
+        public int Id { get; set; }
         public Expense Expense { get; set; }
-        public IEnumerable<SelectListItem> TypeDropDown{ get; set; }
+        public List<SelectListItem> TypeDropDown{ get; set; }
     }
 }
